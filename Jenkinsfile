@@ -43,13 +43,11 @@ pipeline {
 
     stage('OCI Image BnP'){
       steps {
-        container('kaniko') { 
+        container('kaniko') {
           sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/ma4cscs/dso-demo'
           }
         }
     }
-     
-
     stage('Deploy to Dev') {
       steps {
         // TODO
